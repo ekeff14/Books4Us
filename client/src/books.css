@@ -1,0 +1,87 @@
+.App{
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+body{
+    background: linear-gradient(white, rgb(141, 141, 239));
+    width: 100%;
+    height: 100%;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.books{
+    display: flex;
+    gap: 1vh;
+}
+
+.book{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    align-items: center;
+}
+
+img{
+    width: 30vh;
+    height: 50vh;
+    object-fit: cover;
+    background-color: rgb(168, 168, 238);
+}
+
+.delete{
+    background-color: rgb(239, 80, 80);
+    cursor: pointer;
+}
+
+.update{
+    background-color: rgb(231, 237, 101);
+    cursor: pointer;
+}
+
+.add{
+    background-color: rgb(101, 237, 119);
+    cursor: pointer;
+}
+
+.desc{
+    border: none;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+input{
+    border: 0.5vh solid rgb(161, 161, 237);
+    width: 40vh;
+    height: 7vh;
+}
+
+button{
+    border: 0.5vh solid rgb(239, 239, 247);
+    width: 40vh;
+    height: 7vh;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+    font-size:larger;
+}
+
+h1{
+    font-size:5vh;
+    font-weight: bolder;
+    text-decoration: underline;
+    color: rgb(168, 168, 238);
+}
+
