@@ -7,8 +7,9 @@ const Update = () => {
         title: "",
         desc: "",
         price: null,
-        cover: "",
     });
+
+const [cover, setCover] = useState(null); // New state for the file
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,15 +33,31 @@ const Update = () => {
         setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    const handleFileChange = (e) => {
+        setCover(e.target.files[0]); // Store the selected file in state
+    };
+
     const handleClick = async (e) => {
         e.preventDefault();
+    
+        const formData = new FormData();
+        formData.append("title", book.title);
+        formData.append("desc", book.desc);
+        formData.append("price", book.price);
+        formData.append("cover", cover); // Attach the file to the form data
+    
         try {
-            await axios.put(`http://localhost:8800/books/${bookId}`, book);
+            await axios.put(`http://localhost:8800/books/${bookId}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            });
             navigate("/");
         } catch (err) {
             console.log('Error updating book:', err);
         }
     };
+    
 
     return (
         <div className='form'>
@@ -48,7 +65,7 @@ const Update = () => {
             <input type='text' value={book.title} placeholder='Title Here' onChange={handleChange} name='title' />
             <input type='text' value={book.desc} placeholder='Description Here' onChange={handleChange} name='desc' />
             <input type='number' value={book.price} placeholder='Price Here' onChange={handleChange} name='price' />
-            <input type='text' value={book.cover} placeholder='Cover Here' onChange={handleChange} name='cover' />
+            <input type='file' onChange={handleFileChange} name='cover' /> {/* New file input for cover */}
             <button className='update' onClick={handleClick}>Update</button>
         </div>
     );

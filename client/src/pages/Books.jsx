@@ -39,7 +39,7 @@ useEffect(()=>{
         <div className='books'>
             {books.map(book=>(
                 <div className="book" key={book.id}>
-                    {book.cover && <img src={book.cover} alt='No Image Yet!'/>}
+                    {book.cover && <img src={`http://localhost:8800/uploads/${book.cover}`} alt='Cover Not Available' />} 
                     <h2>{book.title}</h2>
                     <p className="desc">{book.desc}</p>
                     <span className="price">£{book.price}</span>

@@ -1,6 +1,9 @@
 import express from "express";
 import mysql from "mysql";
 import cors from 'cors';
+import multer from 'multer'; 
+import path from 'path'; // Import path (optional, but useful for handling file paths)
+
 
 const app = express();
 
@@ -10,6 +13,19 @@ const db = mysql.createConnection({
     password: "pass_12345",
     database: "test"
 });
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Save files in the uploads directory
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Save files with a unique name
+    }
+});
+
+const upload = multer({ storage });
+
+app.use('/uploads', express.static('uploads')); // Serve static files from the uploads directory
 
 app.use(express.json());
 app.use(cors());
@@ -49,13 +65,13 @@ app.get("/books/:id", (req, res) => {
 });
 
 // Add a new book
-app.post("/books", (req, res) => {
+app.post("/books", upload.single('cover'), (req, res) => {
     const q = "INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)";
     const values = [
         req.body.title,
         req.body.desc,
         req.body.price,
-        req.body.cover,
+        req.file ? req.file.filename : null, // Store the filename of the uploaded cover
     ];
 
     db.query(q, [values], (err, data) => {
@@ -63,6 +79,7 @@ app.post("/books", (req, res) => {
         return res.json("Book has been created!");
     });
 });
+
 
 // Delete a book by ID
 app.delete("/books/:id", (req, res) => {
@@ -76,7 +93,7 @@ app.delete("/books/:id", (req, res) => {
 });
 
 // Update a book by ID
-app.put("/books/:id", (req, res) => {
+app.put("/books/:id", upload.single('cover'), (req, res) => {
     const bookId = req.params.id;
     const q = "UPDATE books SET `title` = ?, `desc` = ?, `price` = ?, `cover` = ? WHERE id = ?";
 
@@ -84,7 +101,7 @@ app.put("/books/:id", (req, res) => {
         req.body.title,
         req.body.desc,
         req.body.price,
-        req.body.cover,
+        req.file ? req.file.filename : req.body.cover, // Use the new file if uploaded, else keep existing
     ];
 
     db.query(q, [...values, bookId], (err, data) => {
@@ -92,6 +109,7 @@ app.put("/books/:id", (req, res) => {
         return res.json("Book has been updated!");
     });
 });
+
 
 app.listen(8800, () => {
     console.log("connected to backend");
