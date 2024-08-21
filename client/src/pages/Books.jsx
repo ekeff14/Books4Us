@@ -34,16 +34,20 @@ useEffect(()=>{
     }
 
   return (
-    <div>
-        <h1>Jeff's Book Store</h1>
+    <div className='App'>
+        <div class="page-header">
+    <h1>Jeff's Best Books</h1>
+    </div>
         <div className='books'>
             {books.map(book=>(
                 <div className="book" key={book.id}>
                     {book.cover && <img src={`http://localhost:8800/uploads/${book.cover}`} alt='Cover Not Available' />} 
-                    <h2>{book.title}</h2>
+                    <h2 className='title'>{book.title}</h2>
                     <p className="desc">{book.desc}</p>
                     <span className="price">£{book.price}</span>
-                    <button className="delete" onClick={()=>handleDelete(book.id)}>Delete</button>
+                    <button className="delete" onClick={()=>handleDelete(book.id)}>Delete
+
+                    </button>
                     <button className="update">
                         <Link to={`/update/${book.id}`}>Update</Link>
                     </button>
@@ -51,7 +55,7 @@ useEffect(()=>{
             ))}
         </div>
         <button className="add">
-    <Link to="/add">Add New Book</Link>
+    <Link to="/add">Add Book</Link>
     </button>
 
     </div>
