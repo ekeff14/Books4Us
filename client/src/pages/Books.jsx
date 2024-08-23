@@ -34,15 +34,23 @@ useEffect(()=>{
     }
 
   return (
-    <div className='App'>
+    <div className='App semibg'>
         <div class="page-header">
-    <h1>Jeff's Best Books</h1>
+    <h1>Books4Us</h1>
     </div>
+
+    <div className='intro'>
+    <h2>Welcome to Jeffrey Books4Us, your gateway to a world of captivating stories and thought-provoking reads! As an avid reader and passionate author, I've curated a special selection of my favorite books, updated weekly for you to explore and discover. Whether you're searching for your next great adventure or looking to dive into a story that resonates, our collection is designed to inspire and entertain.</h2>
+    </div>
+
+    <div>
+        <p className='header2'>My Selections</p>
+        </div>
         <div className='books'>
             {books.map(book=>(
                 <div className="book" key={book.id}>
                     {book.cover && <img src={`http://localhost:8800/uploads/${book.cover}`} alt='Cover Not Available' />} 
-                    <h2 className='title'>{book.title}</h2>
+                    <h3 className='title'>{book.title}</h3>
                     <p className="desc">{book.desc}</p>
                     <span className="price">£{book.price}</span>
                     <button className="delete" onClick={()=>handleDelete(book.id)}>Delete

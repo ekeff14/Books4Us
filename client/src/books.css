@@ -1,13 +1,16 @@
 .App{
-    height: 100vh;
     align-items: center;
     display: flex;
     justify-content: center;
     text-align: center;
+    min-height: 100%;
+    flex-direction: column;
+    padding: 10vh;
 }
 
+
 body{
-    background: linear-gradient(white, rgb(141, 141, 239));
+    background: linear-gradient(white, rgb(99, 99, 238));
     width: 100%;
     height: 100%;
     font-style: italic;
@@ -15,11 +18,10 @@ body{
     
 }
 
-.App{
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 10vh;
+.semibg{
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5vw;
+    padding: 1.5vw;
 }
 
 .books{
@@ -58,6 +60,8 @@ img{
 .add{
     background-color: rgb(101, 237, 119);
     cursor: pointer;
+    margin-top: 10vh;
+
 }
 
 button .update a, button .add a {
@@ -78,7 +82,7 @@ button:hover {
 .title{
     text-decoration: underline;
     color: white;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 .form{
@@ -109,17 +113,29 @@ button{
 }
 
 h1{
-    font-size:5vh;
+    font-size:20vh;
     font-style:normal;
     font-weight: bolder;
     text-decoration: underline;
-    color: rgb(168, 168, 238);
+    color:rgb(99, 99, 238);
+    padding-bottom: 5vh;
+}
+
+.intro{
+    color: white;
+    padding-bottom: 10vh;
 }
 
 .price{
     font-weight: bolder;
     font-size:5vh;
     color: white;
+}
+
+.header2{
+    font-size:xx-large;
+    color: white;
+    text-decoration: underline;
 }
 
 

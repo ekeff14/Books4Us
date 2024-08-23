@@ -52,8 +52,11 @@ const handleClick = async (e) => {
 console.log(book)
 
   return (
-    <div className='form'>
-    <h1>Add New Book</h1>
+    <div className='form semibg'>
+     <h1>Books4Us</h1>
+            <div>
+        <p className='header2'>Add Book</p>
+        </div>
     <input type='text' placeholder='Title Here' onChange={handleChange} name='title'/>
     <input type='text' placeholder='Description Here' onChange={handleChange} name='desc'/>
     <input type='number' placeholder='Price Here' onChange={handleChange} name='price'/>

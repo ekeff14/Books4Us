@@ -60,8 +60,11 @@ const [cover, setCover] = useState(null); // New state for the file
     
 
     return (
-        <div className='form'>
-            <h1>Update Book</h1>
+        <div className='form semibg'>
+            <h1>Books4Us</h1>
+            <div>
+        <p className='header2'>Update Book</p>
+        </div>
             <input type='text' value={book.title} placeholder='Title Here' onChange={handleChange} name='title' />
             <input type='text' value={book.desc} placeholder='Description Here' onChange={handleChange} name='desc' />
             <input type='number' value={book.price} placeholder='Price Here' onChange={handleChange} name='price' />
