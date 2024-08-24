@@ -5,7 +5,7 @@
     text-align: center;
     min-height: 100%;
     flex-direction: column;
-    padding: 10vh;
+    padding: 3vh;
 }
 
 
@@ -94,10 +94,19 @@ button:hover {
     align-content: center;
 }
 
-input{
+input:not([type="file"]) {
     border: 0.5vh solid rgb(161, 161, 237);
+    border-radius: 1vw;
     width: 40vh;
     height: 7vh;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 0 auto; /* Center the button horizontally */
+    padding: 0.5vh 1vh; /* Add some padding */
+    width: auto; /* Adjust the width to fit the content */
+    border: none; /* Remove the border */
 }
 
 button{
@@ -118,12 +127,12 @@ h1{
     font-weight: bolder;
     text-decoration: underline;
     color:rgb(99, 99, 238);
-    padding-bottom: 5vh;
+    padding-bottom: 2vh;
 }
 
 .intro{
     color: white;
-    padding-bottom: 10vh;
+    padding-bottom: 2vh;
 }
 
 .price{
